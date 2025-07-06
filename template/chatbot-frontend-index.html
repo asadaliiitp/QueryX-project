@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIT Patna FAQ Chatbot</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/chatbot-frontend-css.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex flex-col h-screen">
+        <!-- Header -->
+        <header class="bg-indigo-800 text-white shadow-lg">
+            <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="/assets/iitp_logo.png" alt="IIT Patna Logo" class="h-12 mr-3" onerror="this.src='/api/placeholder/48/48'; this.onerror=null;">
+                    <h1 class="text-xl font-bold">QueryX-IIT Patna FAQ Assistant</h1>
+                </div>
+                <button id="toggleChatBtn" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg shadow md:hidden">
+                    <i class="fas fa-comments"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 container mx-auto px-4 py-6 flex flex-col md:flex-row">
+            <!-- Information Panel (hidden on mobile when chat is open) -->
+            <div id="infoPanel" class="w-full md:w-2/3 bg-white rounded-lg shadow-md p-6 mb-6 md:mb-0 md:mr-6">
+                <h2 class="text-2xl font-bold text-indigo-800 mb-4">Hey! I'm QueryX-IIT Patna's AI Assistant</h2>
+                <p class="mb-4">
+                    I'm designed to answer your questions about IIT Patna.😊 
+                    Feel free to ask about:
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div class="bg-indigo-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-indigo-700"><i class="fas fa-user-graduate mr-2"></i>Admissions</h3>
+                        <p class="text-sm">Application process, eligibility criteria, important dates</p>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-indigo-700"><i class="fas fa-book mr-2"></i>Academics</h3>
+                        <p class="text-sm">Courses offered, curriculum, faculty information</p>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-indigo-700"><i class="fas fa-home mr-2"></i>Campus Life</h3>
+                        <p class="text-sm">Hostels, facilities, extracurricular activities</p>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-indigo-700"><i class="fas fa-briefcase mr-2"></i>Placements</h3>
+                        <p class="text-sm">Recruitment statistics, companies, preparation</p>
+                    </div>
+                </div>
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-lightbulb text-yellow-400"></i>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm text-yellow-700">
+                                Click on the chat icon in the bottom right corner to start a conversation with our AI assistant.👉
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-4">
+            <div class="container mx-auto px-4 text-center">
+                <p>&copy; 2025 Indian Institute of Technology Patna. All rights reserved.</p>
+                <p class="text-sm text-gray-400 mt-1">AI Assistant developed by BSc CSDA Students</p>
+            </div>
+        </footer>
+
+        <!-- Mobile Chat Toggle Button -->
+        <button 
+            id="mobileChatBtn" 
+            class="fixed bottom-6 right-6 bg-indigo-600 hover:bg-indigo-700 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center md:hidden"
+        >
+            <i class="fas fa-comments text-xl"></i>
+        </button>
+    </div>
+
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger
+    intent="WELCOME"
+    chat-title="QueryX"
+    agent-id="c71dce54-78f0-4fa6-b766-8eaf157b5e75"
+    language-code="en"
+    ></df-messenger>
+    <script src="/static/chat.js"></script>
+</body>
+</html>
